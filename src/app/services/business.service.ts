@@ -15,8 +15,6 @@ export class BusinessService {
   }
 }
 
-
-
 export interface Business {
   $key?: string;
   Category?: string;

@@ -1,3 +1,46 @@
+<div class="top-bar">
+  <div class="row">
+    <div class="top-bar-left">
+      <ul>
+        <li class="menu-text">Business contacts</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <!-- business  --->
+    <div *ngIf="businesses">
+      <table>
+        <thead>
+          <th>company</th>
+          <th>category</th>
+          <th>description</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let business of businesses">
+            <td>{{business.company}}</td>
+            <td>{{business.Category}}</td>
+            <td>{{business.description}}</td>
+            <td>
+              <button class="button">More</button>
+              <button class="button secondary">Edit</button>
+              <button class="button alert">Delete</button>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
 <h1>
   {{title}}
 </h1>
