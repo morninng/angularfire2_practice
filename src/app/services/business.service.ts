@@ -6,12 +6,26 @@ import 'rxjs/add/operator/map';
 export class BusinessService {
 
   businesses: FirebaseListObservable<Business[]>;
+  categories: FirebaseListObservable<Categories[]>;
 
   constructor(private _af:AngularFire) {}
 
-  getBusinesses(){
-    this.businesses = this._af.database.list('/businesses') as FirebaseListObservable<Business[]>
+  getBusinesses(category:string = ""){
+    if(category != ""){
+      this.businesses = this._af.database.list('/businesses', {
+        query: {
+          orderByChild: 'Category',
+          equalTo: category
+        }
+      }) as FirebaseListObservable<Business[]>
+    }else{
+      this.businesses = this._af.database.list('/businesses') as FirebaseListObservable<Business[]>
+    }
     return this.businesses;
+  }
+  getCategories( ){
+    this.categories = this._af.database.list('/categories') as FirebaseListObservable<Categories[]>
+    return this.categories;
   }
 }
 
@@ -21,4 +35,11 @@ export interface Business {
   city?: string;
   company?: string;
   description?: string;
+}
+
+
+
+export interface Categories {
+  $key?: string;
+  name?: string;
 }

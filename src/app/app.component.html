@@ -1,3 +1,4 @@
+
 <div class="top-bar">
   <div class="row">
     <div class="top-bar-left">
@@ -10,6 +11,24 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="appState == 'default'" class="row">
+  <div class="lare-6 columns">
+    <button class="button" (click)="changestate('add')">Add Business </button>
+  </div>
+  <div class="large-6 columns">
+    <label> Filter Category
+      <select (change)="filterCategory(filteredCategory.value)" #filteredCategory>
+        <option value="{{null}}">Select</option>
+        <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+
+
+
 
 <!-- Extended listing -->
 <div *ngIf="appState == 'extended'">
