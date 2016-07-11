@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import {BusinessService} from './services/business.service';
+import {BusinessService, Business} from './services/business.service';
 
 
 @Component({
@@ -22,12 +22,4 @@ export class AppComponent implements OnInit{
       this.businesses = businesses;
     })
   }
-}
-
-export interface Business {
-  $key?: string;
-  Category?: string;
-  city?: string;
-  company?: string;
-  description?: string;
 }
