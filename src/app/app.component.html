@@ -11,6 +11,33 @@
   </div>
 </div>
 
+<!-- Extended listing -->
+<div *ngIf="appState == 'extended'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')"> Go Back</button>
+    </div>
+  </div>
+  <div *ngFor="let business of businesses">
+    <div *ngIf="business.$key == activeKey">
+      <div class="row">
+        <div class="large-5 columns large-offset-1">
+          <h3>{{business.company}}</h3>
+          <p>{{business.description}}</p>
+        </div>
+        <div class="large-5 columns large-offset-1">
+          <ul>
+            <li>{{business.city}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="row">
   <div class="large-12 columns">
     <!-- business  --->
@@ -27,7 +54,7 @@
             <td>{{business.Category}}</td>
             <td>{{business.description}}</td>
             <td>
-              <button class="button">More</button>
+              <button class="button" (click)="changeState('extended', business.$key)">More</button>
               <button class="button secondary">Edit</button>
               <button class="button alert">Delete</button>
             </td>
