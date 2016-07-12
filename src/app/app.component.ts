@@ -44,17 +44,18 @@ export class AppComponent implements OnInit{
     })
   }
   addBusiness(company:string, category:string, description:string){
-    var created_at = new Date().toString();
-    var newBusiness = {
+    let created_at = new Date().toString();
+    let newBusiness: Business;
+     newBusiness = {
       Category: category,
       company: company,
       description:description,
       created_at: created_at
     }
+
     console.log(newBusiness);
     this._businessService.addBusiness(newBusiness);
     this.changeState('default');
   }
-  
-  
+
 }
