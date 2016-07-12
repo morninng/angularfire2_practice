@@ -14,7 +14,7 @@
 
 <div *ngIf="appState == 'default'" class="row">
   <div class="lare-6 columns">
-    <button class="button" (click)="changestate('add')">Add Business </button>
+    <button class="button" (click)="changeState('add')" >Add Business </button>
   </div>
   <div class="large-6 columns">
     <label> Filter Category
@@ -24,9 +24,64 @@
       </select>
     </label>
   </div>
+
+
+
+
 </div>
 
+<!-- add form -->
 
+<div *ngIf="appState == 'add'">
+  <div class="large-12 columns">
+    <h3></h3>
+    <form  (submit)="addBusiness(
+      company.value,
+      category.value,
+      description.value
+    )">
+      <div class="row">
+        <div class="large-6 columns">
+          <label>
+            <input type="text" placeholder="company name" #company>
+          </label>
+        </div>
+        <div class="large-6 columns">
+          <label>
+            <select #category>
+              <option value="0">Select</option>
+              <option *ngFor="let category of categories" value="{{category.name}}">{{category.name}}</option>
+
+            </select>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Years In Business
+            <input type="text" placeholder="year in business" #category>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Description
+              <textarea #description></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+
+
+
+    </form>
+  </div>
+</div>
 
 
 

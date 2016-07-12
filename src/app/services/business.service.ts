@@ -27,6 +27,10 @@ export class BusinessService {
     this.categories = this._af.database.list('/categories') as FirebaseListObservable<Categories[]>
     return this.categories;
   }
+  addBusiness( newBusiness :Business) :Promise<any>{
+    return this.businesses.push(newBusiness)
+  }
+  
 }
 
 export interface Business {
@@ -35,6 +39,7 @@ export interface Business {
   city?: string;
   company?: string;
   description?: string;
+  created_at?: string;
 }
 
 

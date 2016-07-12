@@ -30,7 +30,7 @@ export class AppComponent implements OnInit{
     })
   }
 
-  changeState(state, key){
+  changeState(state, key =null){
     console.log("App state :" + state)
     if(key){
       console.log("active key: " + key);
@@ -43,5 +43,18 @@ export class AppComponent implements OnInit{
       this.businesses = businesses;
     })
   }
+  addBusiness(company:string, category:string, description:string){
+    var created_at = new Date().toString();
+    var newBusiness = {
+      Category: category,
+      company: company,
+      description:description,
+      created_at: created_at
+    }
+    console.log(newBusiness);
+    this._businessService.addBusiness(newBusiness);
+    this.changeState('default');
+  }
+  
   
 }
