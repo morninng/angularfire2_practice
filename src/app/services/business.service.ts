@@ -30,9 +30,13 @@ export class BusinessService {
   addBusiness( newBusiness :Business) :Promise<any>{
     return this.businesses.push(newBusiness)
   }
-  
-}
 
+  updateBusiness(key, updated_business):Promise<any>{
+    return this.businesses.update(key, updated_business);
+  }
+  
+
+}
 export interface Business {
   $key?: string;
   Category?: string;

@@ -31,6 +31,12 @@
 <!-- add form -->
 
 <div *ngIf="appState == 'add'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')"> Go Back</button>
+    </div>
+  </div>
+
   <div class="large-12 columns">
     <h3></h3>
     <form  (submit)="addBusiness(
@@ -80,6 +86,61 @@
 </div>
 
 
+<!-- add form -->
+
+<div *ngIf="appState == 'edit'">
+  <div class="row">
+    <div class="large-12 large-1-offset columns">
+      <button class="button alert" (click)="changeState('default')"> Go Back</button>
+    </div>
+  </div>
+
+  <div class="large-12 columns">
+    <h3></h3>
+    <form  (submit)="updateBusiness()">
+      <div class="row">
+        <div class="large-6 columns">
+          <label>
+            <input type="text" placeholder="company name" [(ngModel)]= "active_company">
+          </label>
+        </div>
+        <div class="large-6 columns">
+          <label>
+            <select [(ngModel)]= "active_category">
+              <option value="0">Select</option>
+              <option *ngFor="let category of categories" value="{{category.name}}" >{{category.name}}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Years In Business
+            <input type="text" placeholder="year in business" #dummy>
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Description
+              <textarea #description [(ngModel)]= "active_description"></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
 
 <!-- Extended listing -->
 <div *ngIf="appState == 'extended'">
@@ -125,7 +186,7 @@
             <td>{{business.description}}</td>
             <td>
               <button class="button" (click)="changeState('extended', business.$key)">More</button>
-              <button class="button secondary">Edit</button>
+              <button class="button secondary"(click)="showEdit(business)">Edit</button>
               <button class="button alert">Delete</button>
             </td>
           </tr>

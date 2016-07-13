@@ -16,7 +16,13 @@ export class AppComponent implements OnInit{
   businesses: Business[];
   categories: Categories[];
   appState: string;
+
   activeKey: string;
+  active_company: string;
+  active_category:string;
+  active_description: string;
+
+
 
   constructor(private _businessService: BusinessService) {}
 
@@ -56,6 +62,27 @@ export class AppComponent implements OnInit{
     console.log(newBusiness);
     this._businessService.addBusiness(newBusiness);
     this.changeState('default');
+  }
+
+  updateBusiness(){
+    let upBusiness :Business;
+    upBusiness = {
+        Category: this.active_category,
+        company: this.active_company,
+        description:this.active_description
+    };
+    this._businessService.updateBusiness(this.activeKey,upBusiness);
+    this.changeState('default');
+
+  }
+  
+
+
+  showEdit(business){
+    this.active_category = business.Category;
+    this.active_company = business.company;
+    this.active_description = business.description;
+    this.changeState('edit', business.$key);
   }
 
 }
