@@ -76,6 +76,11 @@ export class AppComponent implements OnInit{
 
   }
   
+  deleteBusiness(business){
+
+    this._businessService.deleteBusiness(business.$key);
+    this.changeState('default');
+  }
 
 
   showEdit(business){

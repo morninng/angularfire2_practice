@@ -34,6 +34,11 @@ export class BusinessService {
   updateBusiness(key, updated_business):Promise<any>{
     return this.businesses.update(key, updated_business);
   }
+
+  deleteBusiness(key){
+    console.log(key);
+    return this.businesses.remove(key);
+  }
   
 
 }
